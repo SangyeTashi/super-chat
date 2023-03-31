@@ -3,6 +3,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { useList } from 'react-firebase-hooks/database';
 import { auth, database } from '../firebase';
 import { ref, push } from 'firebase/database';
+import Header from './Header';
 type ChatPageProps = {};
 
 const ChatPage: React.FC<ChatPageProps> = () => {
@@ -26,19 +27,10 @@ const ChatPage: React.FC<ChatPageProps> = () => {
     }
 
     return (
-        <div>
-            {isLoading ? (
-                <h1>Loading</h1>
-            ) : (
-                <div>
-                    <img src={user?.photoURL || ''} />
-                    <h1>Welcome to the chat {user?.displayName}</h1>
-                    <button onClick={logout}>Logout</button>
-                </div>
-            )}
+        <div className=" max-w-xl mx-auto border-slate-900 border bg-slate-200 mt-5">
+            {isLoading ? <h1>Loading</h1> : user && <Header user={user} />}
 
             <div>
-                <h1>Super Chat</h1>
                 {messageError && (
                     <strong> Error : {messageError.message}</strong>
                 )}
