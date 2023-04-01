@@ -9,7 +9,9 @@ function App() {
     return (
         <RecoilRoot>
             {loading && <h1>loading</h1>}
-            {!loading && (user ? <ChatPage /> : <Login />)}
+            <div className="h-screen p-3">
+                {!loading && (user ? <ChatPage /> : <Login />)}
+            </div>
         </RecoilRoot>
     );
 }
