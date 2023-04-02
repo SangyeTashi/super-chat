@@ -1,31 +1,32 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { useList } from 'react-firebase-hooks/database';
+
 import { auth, database } from '../firebase';
 import { ref, push } from 'firebase/database';
 import Header from './Header';
-import Message from './Message';
+
+import ChatBox from './ChatBox';
 type ChatPageProps = {};
 
 const ChatPage: React.FC<ChatPageProps> = () => {
     const [user, isLoading, error] = useAuthState(auth);
-    const [messages, messageLoading, messageError] = useList(
-        ref(database, 'messages/')
-    );
     const inputRef = useRef<HTMLInputElement>(null);
+
     function logout() {
         auth.signOut();
     }
 
     function handleClick(e: React.MouseEvent<HTMLFormElement>) {
         e.preventDefault();
-        if (inputRef.current) {
+        if (inputRef.current?.value) {
             push(ref(database, 'messages/' + ''), {
                 senderId: user?.uid,
                 message: inputRef.current.value,
                 photoURL: user?.photoURL,
                 senderName: user?.displayName,
             });
+
+            //scrollRef?.current?.lastElementChild?.scrollIntoView();
             inputRef.current.value = '';
         }
     }
@@ -35,26 +36,8 @@ const ChatPage: React.FC<ChatPageProps> = () => {
             {error && <h1>{error.message}</h1>}
             {isLoading ? <h1>Loading</h1> : user && <Header user={user} />}
 
-            <div className=" p-4 shrink space-y-4 overflow-scroll">
-                {messageError && <h1> Error : {messageError.message}</h1>}
-                {messageLoading ? (
-                    <span>messages loading...</span>
-                ) : (
-                    messages && (
-                        <div className="flex flex-col items-start space-y-1 overflow-y-auto">
-                            {messages.map((v) => (
-                                <Message
-                                    key={v.key}
-                                    message={v.val().message}
-                                    senderId={v.val().senderId}
-                                    photoURL={v.val().photoURL}
-                                    senderName={v.val().senderName}
-                                />
-                            ))}
-                        </div>
-                    )
-                )}
-            </div>
+            <ChatBox />
+
             <form className="flex p-2 space-x-2" onSubmit={handleClick}>
                 <input
                     className="rounded-full px-3  text-white py-2  bg-slate-600 grow"
@@ -69,7 +52,12 @@ const ChatPage: React.FC<ChatPageProps> = () => {
                     send
                 </button>
             </form>
-            <button onClick={logout}>Logout</button>
+            <button
+                className="bg-red-600 rounded-lg p-4 m-4 text-white"
+                onClick={logout}
+            >
+                Logout
+            </button>
         </div>
     );
 };
