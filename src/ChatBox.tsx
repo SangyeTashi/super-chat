@@ -3,7 +3,6 @@ import { useEffect, useRef } from 'react';
 import { useList } from 'react-firebase-hooks/database';
 import { database } from '../firebase';
 import Message from './Message';
-import { useAutoAnimate } from '@formkit/auto-animate/react';
 const ChatBox = () => {
     // Get messages
     const [messages, messageLoading, messageError] = useList(
@@ -13,12 +12,10 @@ const ChatBox = () => {
 
     //Scroll new messages into view
     useEffect(() => {
-        scrollParentRef.current?.lastElementChild?.scrollIntoView({
-            behavior: 'smooth',
-        });
+        scrollParentRef.current?.lastElementChild?.scrollIntoView();
     }, [messages]);
     return (
-        <div className=" p-4 shrink space-y-4 overflow-scroll">
+        <div className=" p-4 shrink space-y-4 overflow-scroll grow">
             {messageError && <h1> Error : {messageError.message}</h1>}
             {messageLoading && <span>messages loading...</span>}
 

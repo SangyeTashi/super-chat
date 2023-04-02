@@ -6,6 +6,7 @@ import { ref, push } from 'firebase/database';
 import Header from './Header';
 
 import ChatBox from './ChatBox';
+import Loading from './Loading';
 type ChatPageProps = {};
 
 const ChatPage: React.FC<ChatPageProps> = () => {
@@ -32,9 +33,9 @@ const ChatPage: React.FC<ChatPageProps> = () => {
     }
 
     return (
-        <div className="flex flex-col max-w-xl max-h-full mx-auto border-slate-900 border bg-slate-200 ">
+        <div className="flex flex-col max-w-xl min-h-full max-h-full mx-auto border-slate-900 border bg-slate-200 ">
             {error && <h1>{error.message}</h1>}
-            {isLoading ? <h1>Loading</h1> : user && <Header user={user} />}
+            {isLoading ? <Loading /> : user && <Header user={user} />}
 
             <ChatBox />
 
