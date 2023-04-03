@@ -41,7 +41,7 @@ const ChatPage: React.FC<ChatPageProps> = () => {
 
             <form className="flex p-2 space-x-2" onSubmit={handleClick}>
                 <input
-                    className="rounded-full px-3  text-white py-2  bg-slate-600 grow"
+                    className="rounded-full px-3  py-2  bg-white grow outline-1 outline-black outline"
                     ref={inputRef}
                     type="text"
                     placeholder="Message..."

@@ -1,4 +1,3 @@
-import React from 'react';
 import { User } from 'firebase/auth';
 interface Props {
     user: User;
@@ -6,7 +5,7 @@ interface Props {
 const Header = ({ user: { displayName, uid, photoURL } }: Props) => {
     return (
         <div className="flex justify-between items-center border-b-slate-900 border p-2 bg-slate-300">
-            <h1>Super Chat</h1>
+            <h1 className="p-1 text-lg font-bold">Super Chat</h1>
 
             <div className="flex items-center space-x-4 ">
                 <h2 className="">{displayName}</h2>
