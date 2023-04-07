@@ -33,7 +33,7 @@ const ChatPage: React.FC<ChatPageProps> = () => {
     }
 
     return (
-        <div className="flex flex-col max-w-xl min-h-full max-h-full mx-auto border-slate-900 border bg-slate-200 ">
+        <div className="flex flex-col max-w-xl min-h-full max-h-full mx-auto border-slate-900 border bg-gradient-to-br from-purple-500 to-blue-500">
             {error && <h1>{error.message}</h1>}
             {isLoading ? <Loading /> : user && <Header user={user} />}
 
@@ -54,7 +54,7 @@ const ChatPage: React.FC<ChatPageProps> = () => {
                 </button>
             </form>
             <button
-                className="bg-red-600 rounded-lg p-4 m-4 text-white"
+                className="bg-purple-900 rounded-lg p-4 m-4 text-white"
                 onClick={logout}
             >
                 Logout

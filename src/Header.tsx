@@ -4,7 +4,7 @@ interface Props {
 }
 const Header = ({ user: { displayName, uid, photoURL } }: Props) => {
     return (
-        <div className="flex justify-between items-center border-b-slate-900 border p-2 bg-slate-300">
+        <div className="flex justify-between items-center border-b-slate-900  border p-2 bg-purple-800 text-white">
             <h1 className="p-1 text-lg font-bold">Super Chat</h1>
 
             <div className="flex items-center space-x-4 ">
