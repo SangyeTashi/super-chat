@@ -22,7 +22,7 @@ const Message: React.FC<MessageProps> = ({
     return (
         <>
             {isSender && (
-                <div className="py-2 px-3 rounded-2xl rounded-br-none self-end bg-slate-900 text-white max-w-md border-white border">
+                <div className="py-2 px-3 rounded-2xl rounded-br-none self-end bg-slate-900 text-white max-w-md ">
                     {message}
                 </div>
             )}
@@ -30,7 +30,7 @@ const Message: React.FC<MessageProps> = ({
                 (showPic ? (
                     <div className="flex space-x-2 ">
                         <img src={photoURL} className="h-7 rounded-full " />
-                        <div className="flex flex-col py-2 px-3 rounded-2xl bg-slate-900 text-white max-w-md border-white border rounded-tl-none">
+                        <div className="flex flex-col py-2 px-3 rounded-2xl bg-slate-900 text-white max-w-md rounded-tl-none">
                             <span className="text-xs text-slate-500">
                                 {senderName}
                             </span>
@@ -39,7 +39,7 @@ const Message: React.FC<MessageProps> = ({
                     </div>
                 ) : (
                     <div className="flex space-x-2 ">
-                        <div className="flex flex-col py-2 px-3 rounded-2xl bg-slate-900 text-white max-w-md border-white border ml-9">
+                        <div className="flex flex-col py-2 px-3 rounded-2xl bg-slate-900 text-white max-w-md ml-9">
                             {message}
                         </div>
                     </div>
