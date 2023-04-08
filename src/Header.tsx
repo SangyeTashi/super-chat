@@ -5,7 +5,7 @@ interface Props {
 }
 const Header = ({ user: { displayName, uid, photoURL } }: Props) => {
     return (
-        <div className="flex justify-between items-center border-b-slate-900  border p-2 bg-purple-800 text-white">
+        <div className="flex justify-between items-center p-3 bg-secondary_dark text-white">
             <div className="flex items-center">
                 <img src={image} className="h-10" alt="" />
                 <h1 className="p-1 text-lg font-bold">Super Chat</h1>
@@ -14,7 +14,7 @@ const Header = ({ user: { displayName, uid, photoURL } }: Props) => {
             <div className="flex items-center space-x-4 ">
                 <h2 className="">{displayName}</h2>
                 {photoURL && (
-                    <img src={photoURL} className="w-12 rounded-full" />
+                    <img src={photoURL} className="w-10 rounded-full" />
                 )}
             </div>
         </div>

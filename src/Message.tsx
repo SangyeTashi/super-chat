@@ -1,8 +1,4 @@
-import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../firebase';
-import { useRecoilState } from 'recoil';
-import { lastSenderIdState } from './atoms/lastSenderId';
-import { useEffect, useState } from 'react';
 type MessageProps = {
     message: string;
     senderId?: string;
@@ -22,7 +18,7 @@ const Message: React.FC<MessageProps> = ({
     return (
         <>
             {isSender && (
-                <div className="py-2 px-3 rounded-2xl rounded-br-none self-end bg-slate-900 text-white max-w-md ">
+                <div className="py-2 px-3 rounded-2xl rounded-br-none self-end bg-green_accent_dark text-white max-w-md ">
                     {message}
                 </div>
             )}
@@ -30,7 +26,7 @@ const Message: React.FC<MessageProps> = ({
                 (showPic ? (
                     <div className="flex space-x-2 ">
                         <img src={photoURL} className="h-7 rounded-full " />
-                        <div className="flex flex-col py-2 px-3 rounded-2xl bg-slate-900 text-white max-w-md rounded-tl-none">
+                        <div className="flex flex-col py-2 px-3 rounded-2xl bg-secondary_dark text-white max-w-md rounded-tl-none">
                             <span className="text-xs text-slate-500">
                                 {senderName}
                             </span>
@@ -39,7 +35,7 @@ const Message: React.FC<MessageProps> = ({
                     </div>
                 ) : (
                     <div className="flex space-x-2 ">
-                        <div className="flex flex-col py-2 px-3 rounded-2xl bg-slate-900 text-white max-w-md ml-9">
+                        <div className="flex flex-col py-2 px-3 rounded-2xl bg-secondary_dark text-white max-w-md ml-9">
                             {message}
                         </div>
                     </div>

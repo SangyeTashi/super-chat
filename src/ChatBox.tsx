@@ -37,8 +37,10 @@ const ChatBox = () => {
                             senderName={v.val().senderName}
                             // if a message sender sends messages contineously, show only one profile
                             showPic={
-                                messages.at(index)?.val().senderId !==
-                                messages.at(index - 1)?.val().senderId
+                                index === 0
+                                    ? true
+                                    : messages.at(index)?.val().senderId !==
+                                      messages.at(index - 1)?.val().senderId
                             }
                         />
                     ))}
