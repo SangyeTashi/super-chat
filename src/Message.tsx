@@ -20,7 +20,7 @@ const Message: React.FC<MessageProps> = ({
     return (
         <>
             {isSender && (
-                <div className="py-2 px-3 rounded-2xl rounded-br-none self-end bg-green_accent_dark text-white max-w-md ">
+                <div className="py-2 px-3 rounded-2xl self-end bg-green_accent_dark text-white max-w-md ">
                     {message}
                 </div>
             )}
