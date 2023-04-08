@@ -1,7 +1,7 @@
 import { ref } from 'firebase/database';
 import { useEffect, useRef, useState } from 'react';
 import { useList } from 'react-firebase-hooks/database';
-import { database } from '../firebase';
+import { auth, database } from '../firebase';
 import Message from './Message';
 import { useRecoilState } from 'recoil';
 import { lastSenderIdState } from './atoms/lastSenderId';
@@ -35,6 +35,7 @@ const ChatBox = () => {
                             senderId={v.val().senderId}
                             photoURL={v.val().photoURL}
                             senderName={v.val().senderName}
+                            senderEmail={v.val().senderEmail}
                             // if a message sender sends messages contineously, show only one profile
                             showPic={
                                 index === 0

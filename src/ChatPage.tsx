@@ -26,9 +26,9 @@ const ChatPage: React.FC<ChatPageProps> = () => {
                 message: inputRef.current.value,
                 photoURL: user?.photoURL,
                 senderName: user?.displayName,
+                senderEmail: user?.email,
             });
 
-            //scrollRef?.current?.lastElementChild?.scrollIntoView();
             inputRef.current.value = '';
         }
     }
