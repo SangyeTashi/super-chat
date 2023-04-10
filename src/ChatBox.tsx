@@ -6,6 +6,7 @@ import Message from './Message';
 import { useRecoilState } from 'recoil';
 import { lastSenderIdState } from './atoms/lastSenderId';
 import FadeLoader from 'react-spinners/BeatLoader';
+import ChatSkeletonLoader from './components/ChatSkeletonLoader';
 const ChatBox = () => {
     // Get messages
     const [messages, messageLoading, messageError] = useList(
@@ -19,9 +20,7 @@ const ChatBox = () => {
     return (
         <div className=" p-4 shrink space-y-4 overflow-scroll grow">
             {messageError && <h1> Error : {messageError.message}</h1>}
-            {messageLoading && (
-                <FadeLoader size={10} color="#00a884" className="text-center" />
-            )}
+            {messageLoading && <ChatSkeletonLoader />}
 
             {/* map and render all messages */}
             {messages && (
