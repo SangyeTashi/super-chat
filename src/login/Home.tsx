@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 import LoginWithGoogle from './LoginWithGoogle';
+import { useRecoilState } from 'recoil';
+import { loginPageState } from '../atoms/loginFormState';
+import Login from './Login';
+import SignUp from './SignUp';
 function Home() {
+    const [loginPage, setLoginPage] = useRecoilState(loginPageState);
     const [isLogin, setIsLogin] = useState(false);
 
     function handleClick() {
@@ -22,54 +27,9 @@ function Home() {
                 <LoginWithGoogle />
 
                 <div className="mx-auto text-sm ">- OR -</div>
-                {isLogin && (
-                    <div className="flex  flex-col w-full space-y-2">
-                        <input
-                            className="bg-gray-200 py-2 px-3 rounded-lg "
-                            type="text"
-                            placeholder="email"
-                        />
-                        <input
-                            className="bg-gray-200 py-2 px-3 rounded-lg "
-                            type="password"
-                            placeholder="password"
-                        />
-                        <button className="py-2 bg-green-600 text-white px-3 rounded-xl hover:bg-green-500  ">
-                            Login
-                        </button>
-                        <button className="text-sm" onClick={handleClick}>
-                            Not Registered?{' '}
-                            <span className="text-blue-700"> Signup</span>
-                        </button>
-                    </div>
-                )}
+                {loginPage === 'LOGIN' && <Login />}
 
-                {!isLogin && (
-                    <div className="flex  flex-col w-full space-y-2">
-                        <input
-                            className="bg-tertiary_dark py-2 px-3 rounded-lg focus:outline-none"
-                            type="text"
-                            placeholder="email"
-                        />
-                        <input
-                            className="bg-tertiary_dark py-2 px-3 rounded-lg focus:outline-none"
-                            type="password"
-                            placeholder="password"
-                        />
-                        <input
-                            className="bg-tertiary_dark py-2 px-3 rounded-lg focus:outline-none"
-                            type="password"
-                            placeholder="confirm password"
-                        />
-                        <button className="py-2  bg-green_accent px-3 rounded-xl hover:bg-green_accent/90 ">
-                            Sign Up
-                        </button>
-                        <button className="text-sm mt-1" onClick={handleClick}>
-                            Already a user?{' '}
-                            <span className="text-blue-700"> Login</span>
-                        </button>
-                    </div>
-                )}
+                {loginPage === 'SIGNUP' && <SignUp />}
             </div>
         </div>
     );
