@@ -57,9 +57,6 @@ const ChatPage: React.FC<ChatPageProps> = () => {
                     <AiOutlineSend size={23} />
                 </button>
             </form>
-            <button className="rounded-lg p-4 m-4 text-white " onClick={logout}>
-                Logout
-            </button>
         </div>
     );
 };
