@@ -15,10 +15,17 @@ const SignUp = () => {
     function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
         setPassword(event.target.value);
     }
+
     function handleConfirmationChange(
         event: React.ChangeEvent<HTMLInputElement>
     ) {
         setConfirmPassword(event.target.value);
+    }
+
+    function handleClick() {
+        emailRef.current &&
+            password &&
+            createUserWithEmailAndPassword(emailRef.current.value, password);
     }
     return (
         <div className="flex  flex-col w-full space-y-2">
@@ -42,7 +49,11 @@ const SignUp = () => {
                 placeholder="confirm password"
                 onChange={handleConfirmationChange}
             />
-            <button className="py-2  bg-green_accent px-3 rounded-xl hover:bg-green_accent/90 ">
+            <button
+                className="py-2  bg-green_accent px-3 rounded-xl hover:bg-green_accent/90 disabled:bg-tertiary_dark"
+                onClick={handleClick}
+                disabled={password !== confirmPassword}
+            >
                 {password !== confirmPassword && (
                     <div>Passwords do not match!</div>
                 )}

@@ -1,4 +1,5 @@
 import { auth } from '../firebase';
+import blankProfilePhoto from './assets/blankPhoto.jpg';
 type MessageProps = {
     message: string;
     senderId?: string;
@@ -12,7 +13,7 @@ const Message: React.FC<MessageProps> = ({
     message,
     senderId,
     senderName,
-    photoURL,
+    photoURL = blankProfilePhoto,
     showPic,
     senderEmail,
 }) => {

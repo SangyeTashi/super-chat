@@ -3,12 +3,13 @@ import image from './assets/logo.png';
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import { useState } from 'react';
 import HeaderDropdown from './components/HeaderDropdown';
+import blankProfilePhoto from './assets/blankPhoto.jpg';
 
 interface Props {
     user: User;
 }
-const Header = ({ user: { displayName, uid, photoURL } }: Props) => {
-    const [showDropdown, setShowDropdown] = useState(true);
+const Header = ({ user: { displayName, photoURL } }: Props) => {
+    const [showDropdown, setShowDropdown] = useState(false);
     return (
         <div className="flex justify-between items-center p-3 bg-secondary_dark text-white">
             <div className="flex items-center">
@@ -41,9 +42,11 @@ const Header = ({ user: { displayName, uid, photoURL } }: Props) => {
                     )}
                 </div>
                 <h2 className="">{displayName}</h2>
-                {photoURL && (
-                    <img src={photoURL} className="w-10 rounded-full" />
-                )}
+
+                <img
+                    src={photoURL ? photoURL : blankProfilePhoto}
+                    className="w-10 rounded-full"
+                />
             </div>
         </div>
     );
