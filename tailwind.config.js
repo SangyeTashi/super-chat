@@ -11,6 +11,7 @@ module.exports = {
                 font_color_light: '#f0ece9',
                 green_accent: '#00a884',
                 green_accent_dark: '#005c4b',
+                green_highlight: '#25d366',
             },
         },
     },

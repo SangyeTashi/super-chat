@@ -3,6 +3,7 @@ import { auth } from '../../firebase';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useSetRecoilState } from 'recoil';
 import { loginPageState } from '../atoms/loginFormState';
+import Button from '../components/Button';
 
 const LoginWithEmail = () => {
     const [signInWithEmailAndPassword, user, loading, error] =
@@ -23,7 +24,6 @@ const LoginWithEmail = () => {
 
     return (
         <>
-            {loading && <h1>Loading</h1>}
             <div className="flex  flex-col w-full space-y-2">
                 <input
                     ref={emailRef}
@@ -38,21 +38,25 @@ const LoginWithEmail = () => {
                     placeholder="password"
                 />
 
-                {error && <h2>{error.code}</h2>}
+                <Button
+                    isLoading={loading}
+                    handleClick={handleClick}
+                    text="Login"
+                />
+                {error && (
+                    <h2 className="my-auto text-green_highlight text-center">
+                        {error.code + ' !'}
+                    </h2>
+                )}
+
                 <button
-                    className="py-2  bg-green_accent px-3 rounded-xl hover:bg-green_accent/90 "
-                    onClick={handleClick}
-                >
-                    Login
-                </button>
-                <button
-                    className="text-sm mt-1"
+                    className="pt-2 mt-1"
                     onClick={() => {
                         setLoginPageState('SIGNUP');
                     }}
                 >
                     Not Registered?{' '}
-                    <span className="text-blue-700"> Sign Up</span>
+                    <span className="text-green_accent"> Sign Up</span>
                 </button>
             </div>
         </>

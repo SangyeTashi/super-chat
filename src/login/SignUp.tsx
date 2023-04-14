@@ -1,8 +1,9 @@
-import React, { HtmlHTMLAttributes, useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { useSetRecoilState } from 'recoil';
 import { loginPageState } from '../atoms/loginFormState';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { auth } from '../../firebase';
+import Button from '../components/Button';
 
 const SignUp = () => {
     const setLoginPageState = useSetRecoilState(loginPageState);
@@ -49,16 +50,18 @@ const SignUp = () => {
                 placeholder="confirm password"
                 onChange={handleConfirmationChange}
             />
-            <button
-                className="py-2  bg-green_accent px-3 rounded-xl hover:bg-green_accent/90 disabled:bg-tertiary_dark"
-                onClick={handleClick}
+            <Button
+                handleClick={handleClick}
                 disabled={password !== confirmPassword}
-            >
-                {password !== confirmPassword && (
-                    <div>Passwords do not match!</div>
-                )}
-                {password === confirmPassword && 'Sign Up'}
-            </button>
+                text="Sign Up"
+                isLoading={loading}
+            />
+            {error && (
+                <h2 className="text-center text-green_accent">
+                    {error.code + ' !'}
+                </h2>
+            )}
+
             <button
                 className="text-sm mt-1"
                 onClick={() => {
