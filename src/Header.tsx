@@ -4,7 +4,6 @@ import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import { useState } from 'react';
 import HeaderDropdown from './components/HeaderDropdown';
 import blankProfilePhoto from './assets/blankPhoto.jpg';
-import { FaSpinner } from 'react-icons/fa';
 interface Props {
     user: User;
 }

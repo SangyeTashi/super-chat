@@ -1,5 +1,7 @@
+import { useRef } from 'react';
 import { auth } from '../firebase';
 import blankProfilePhoto from './assets/blankPhoto.jpg';
+import MessageBubbleSender from './components/MessageBubbleSender';
 type MessageProps = {
     message: string;
     senderId?: string;
@@ -18,13 +20,10 @@ const Message: React.FC<MessageProps> = ({
     senderEmail,
 }) => {
     const isSender = senderId === auth.currentUser?.uid ? true : false;
+    const messageRef = useRef(null);
     return (
         <>
-            {isSender && (
-                <div className="py-2 px-3 rounded-2xl self-end bg-green_accent_dark text-white max-w-md ">
-                    {message}
-                </div>
-            )}
+            {isSender && <MessageBubbleSender text={message} />}
             {!isSender &&
                 (showPic ? (
                     <div className="flex space-x-2 pt-3">
