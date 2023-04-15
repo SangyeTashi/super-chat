@@ -12,7 +12,7 @@ const ChatBox = () => {
     return (
         <div
             id="scrollParent"
-            className=" p-4 shrink space-y-4 overflow-scroll "
+            className=" p-4 shrink space-y-4 overflow-scroll  "
         >
             {messageError && <h1> Error : {messageError.message}</h1>}
             {messageLoading && <ChatSkeletonLoader />}
