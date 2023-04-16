@@ -4,11 +4,14 @@ import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import { useState } from 'react';
 import HeaderDropdown from './components/HeaderDropdown';
 import blankProfilePhoto from './assets/blankPhoto.jpg';
+import { useSetRecoilState } from 'recoil';
+import { pagesStateAtom } from './atoms/pagesStatesAtom';
 interface Props {
     user: User;
 }
 const Header = ({ user: { displayName, photoURL } }: Props) => {
     const [showDropdown, setShowDropdown] = useState(false);
+    const setPageState = useSetRecoilState(pagesStateAtom);
     return (
         <div className="flex justify-between items-center p-3 bg-secondary_dark text-white">
             <div className="flex items-center">
@@ -44,7 +47,10 @@ const Header = ({ user: { displayName, photoURL } }: Props) => {
 
                 <img
                     src={photoURL ? photoURL : blankProfilePhoto}
-                    className="w-10 rounded-full"
+                    className="w-10 rounded-full cursor-pointer"
+                    onClick={() => {
+                        setPageState('PROFILE');
+                    }}
                 />
             </div>
         </div>
