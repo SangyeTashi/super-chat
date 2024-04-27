@@ -38,7 +38,7 @@ const ChatPage = () => {
     return (
         <>
             {pageState === 'CHATPAGE' && (
-                <div className="flex flex-col max-w-3xl min-h-full max-h-full mx-auto border-slate-900 border">
+                <div className="flex flex-col max-w-3xl h-screen mx-auto border-slate-900 border">
                     {error && <h1>{error.message}</h1>}
                     {isLoading ? <Loading /> : user && <Header user={user} />}
 

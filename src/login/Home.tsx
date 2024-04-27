@@ -8,7 +8,7 @@ function Home() {
 
     return (
         <div className="flex flex-col items-center justify-center h-full  ">
-            <div className="bg-secondary_dark p-10 flex-col space-y-4 flex items-stretch rounded-2xl ">
+            <div className="bg-secondary_dark p-10 flex-col space-y-4 min-w-[400px] flex items-stretch rounded-2xl ">
                 <div className="flex flex-col items-center pb-2">
                     <h1 className="text-xl font-bold ">Super Chat</h1>
                     <img

@@ -12,19 +12,20 @@ const ChatBox = () => {
     return (
         <div
             id="scrollParent"
-            className=" p-4 shrink space-y-4 overflow-scroll  "
+            className=" p-4 grow space-y-4 overflow-y-auto bar "
         >
             {messageError && <h1> Error : {messageError.message}</h1>}
             {messageLoading && <ChatSkeletonLoader />}
 
             {/* map and render all messages */}
             {messages && (
-                <div className="flex flex-col items-start space-y-1 overflow-y-auto overflow-x-hidden">
+                <div className="flex flex-col items-start space-y-1 ">
                     {messages.map((v, index) => {
                         if (v.val().senderId === auth.currentUser?.uid) {
                             return (
                                 <MessageBubbleSender
                                     text={v.val().message}
+                                    key={v.key}
                                     isLatest={index + 1 === messages.length}
                                 />
                             );
